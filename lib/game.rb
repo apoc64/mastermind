@@ -10,23 +10,22 @@ class Game
     @start_time = Time.new
     # puts @answer
     puts "    What's your guess?"
-    # user_loop
   end #initialize
 
-  def generate_answer(length, char_set) #class?
+  def generate_answer(length, char_set)
     Array.new(length).map do
       char_set.sample
     end.join
   end #generate answer
 
-  def you_win
-    game_time = (Time.new - @start_time).to_i #minutes - /60 %60?
-    minutes = game_time/60
-    seconds = game_time%60
+  def you_win #how to test?
+    game_time = (Time.new - @start_time).to_i
+    minutes = game_time / 60
+    seconds = game_time % 60
     puts "Congratulations! You guessed the sequence '#{@answer}' in #{@number_of_guesses} guesses over #{minutes} minutes, #{seconds} seconds"
   end #you_win
 
-  def evaluate_guess(guess)
+  def evaluate_guess(guess) #how to test?
     elements = evaluate_elements(guess)
     positions = evaluate_positions(guess)
     puts "'#{guess}' has #{elements} of the correct elements with #{positions} in the correct positions."
