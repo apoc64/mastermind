@@ -19,7 +19,7 @@ class GameTest < MiniTest::Test
   end
 
   def test_evaluate_elements
-    assert_equal 0, @game.evaluate_elements("WWWW")
+    assert_equal 0, @game.evaluate_elements("WQMZ")
     refute @game.evaluate_elements(@game.answer) == 0
   end
 

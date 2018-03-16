@@ -9,7 +9,7 @@ class Game
     @number_of_guesses = 0
     @start_time = Time.new
     # puts @answer
-    puts "    What's your guess?"
+    print "\nWhat's your guess? "
   end #initialize
 
   def generate_answer(length, char_set)
@@ -29,7 +29,7 @@ class Game
     elements = evaluate_elements(guess)
     positions = evaluate_positions(guess)
     puts "'#{guess}' has #{elements} of the correct elements with #{positions} in the correct positions."
-    puts "    Guess again."
+    print "\nGuess again. "
     @number_of_guesses += 1
   end #evaluate_guess
 
