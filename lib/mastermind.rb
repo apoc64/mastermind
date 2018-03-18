@@ -1,14 +1,14 @@
 # Mastermind Runner File
 require_relative './game'
-# require 'pry'??? Why won't this work?
+require 'pry'
 
 def user_loop(game)
-  loop do
+  loop do #what is best kind of loop for this?
     user_guess = gets.chomp.upcase
     if user_guess == "Q" #case/when/then instead of if?
       break
     elsif user_guess == "C"
-      puts game.answer
+      puts game.answer + "... you cheater"
     elsif user_guess.length < game.length
       puts "Too short.\nGuess again. "
     elsif user_guess.length > game.length
@@ -23,13 +23,8 @@ def user_loop(game)
 end #user_loop
 
 def choose_difficulty
-  # When the user is getting ready to start a game, ask them what difficulty level they’d like to play with the following adaptations:
-  #
-  # Beginner = 4 characters, 4 colors
-  # Intermediate = 6 characters, 5 colors
-  # Advanced = 8 characters, 6 colors
   puts "Please choose your difficulty:\n  (b)eginner: 4 elements, 4 colors.\n  (i)ntermediate: 6 elements, 5 colors\n  (a)dvanced = 8 elements, 6 colors"
-  # loop do
+  # loop do - I got rid of this. Should I put it back?
     print "What is your choice? "
     user_choice = gets.chomp.upcase
     if user_choice == "B"
@@ -40,14 +35,13 @@ def choose_difficulty
       advanced_game
     else
       puts "Invalid selection. Please choose again."
-      choose_difficulty
+      choose_difficulty #Is this weird? Should I use a loop?
     end
-  # end
-
+  # end # of the commented out loop
 end
 
 def beginner_game
-  puts "\nI have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\n\n" #code to set
+  puts "\nI have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\n\n"
   game = Game.new(4, ["R", "G", "B", "Y"])
 end
 
@@ -61,16 +55,12 @@ def advanced_game
   game = Game.new(8, ["R", "G", "B", "Y", "O", "P"])
 end
 
-def play_game #merge w/choose_difficulty
+def play_game
   game = choose_difficulty
-  #choose difficulty
-  # puts "\nI have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\n\n" #code to set based on difficulty
-  # game = Game.new(4, ["R", "G", "B", "Y"])
   user_loop(game)
-  #new game
 end
 
-# Start of game - First line of code:
+# Start of game - First line of executed code:
 puts "\n   ***** Welcome to MASTERMIND *****\n"
 
 user_choice = ""

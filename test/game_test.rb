@@ -19,8 +19,8 @@ class GameTest < MiniTest::Test
   end
 
   def test_evaluate_elements
-    assert_equal 0, @game.evaluate_elements("WQMZ")
-    refute @game.evaluate_elements(@game.answer) == 0
+    assert_equal 0, @game.evaluate_elements("WQMZ") #These letters should never match
+    refute @game.evaluate_elements(@game.answer) == 0 #The right answer should never be zero
   end
 
   def test_evaluate_positions

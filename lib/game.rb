@@ -1,11 +1,13 @@
 #Class for Mastermind game
+require 'pry'
+
 class Game
   attr_reader :answer,
               :length
 
   def initialize(length, colors)
     @length = length
-    @answer = generate_answer(length, colors) #can take different
+    @answer = generate_answer(length, colors)
     @number_of_guesses = 0
     @start_time = Time.new
     # puts @answer
@@ -35,8 +37,8 @@ class Game
 
   def evaluate_elements(guess)
     elements = 0
-    correct_elements = "" #avoid duplication ?uniq
-    @length.times do |index| #.split
+    correct_elements = "" #avoid duplication ?uniq?
+    @length.times do |index| #.split?
       guess_char = guess[index]
       if @answer.include?(guess_char) && !correct_elements.include?(guess_char)
         elements += 1
